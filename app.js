@@ -16,7 +16,7 @@ app.use(methodOverrride('_method', {
 
 app.set('views', path.join(__dirname, 'src/views'));
 
-app.use(express.static(path.join(__dirname, 'public')))
+app.use('/puclic',express.static(path.join(__dirname, 'public')))
 
 app.set('view engine','ejs');
 
@@ -24,6 +24,7 @@ app.use('/', rootRouter)
 app.use('/checklists',checklistRouter)
 app.use('/checklists',taskRouter.ChecklistDependent)
 app.use('/tasks',taskRouter.simple)
+app.use(express.static('public'));
 
 app.listen(3000,()=>{
     console.log('server is running on port 3000')
